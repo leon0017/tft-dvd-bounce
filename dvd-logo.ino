@@ -186,6 +186,7 @@ void loop() {
   delay(5);
 }
 
+// Called once per line in image
 void pngCache(PNGDRAW *pDraw) {
   if (imageBuffer) {
     png.getLineAsRGB565(pDraw, (uint16_t *)(imageBuffer + pDraw->y * imageWidth), PNG_RGB565_BIG_ENDIAN, 0xffffffff);
