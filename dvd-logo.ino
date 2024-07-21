@@ -156,12 +156,6 @@ int16_t dirY = 1;
 int16_t speed = 5;
 
 void loop() {
-  delay(5);
-
-  speed = analogRead(SPEED_POT_PIN) / 150;
-
-  moveImage(dirX * speed, dirY * speed);
-
   if (locX + imageWidth >= SCREEN_WIDTH || locX <= 0) {
       dirX = -dirX;  // Reverse X direction
       setImageColor(random(0, 0x10000));
@@ -185,6 +179,11 @@ void loop() {
           locY = SCREEN_HEIGHT - imageHeight;
       }
   }
+
+  speed = analogRead(SPEED_POT_PIN) / 150;
+  moveImage(dirX * speed, dirY * speed);
+
+  delay(5);
 }
 
 void pngCache(PNGDRAW *pDraw) {
